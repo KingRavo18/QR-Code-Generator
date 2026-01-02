@@ -22,6 +22,18 @@ input{
     cursor: pointer;
     border-top-left-radius: 10px;
     border-bottom-left-radius: 10px;
+    border: none;
+    transition: 0.25s;
+
+    &:hover{
+        background-color: rgb(233, 233, 233);
+        padding-right: 80px;
+    }
+
+    &:focus{
+        outline: none;
+        padding-right: 80px;
+    }
 }
 
 button{
