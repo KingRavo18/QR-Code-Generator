@@ -11,14 +11,25 @@ main{
     flex-direction: column;
 }
 
+h1{
+    color: white;
+    font-size: 325%;
+}
+
 input{
+    font-size: 125%;
+    padding: 5px 10px;
     cursor: pointer;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
 }
 
 button{
-
+    font-size: 125%;
+    padding: 5px 10px;
+    cursor: pointer;
 }
 
 img{
-    
+
 }

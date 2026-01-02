@@ -10,7 +10,7 @@ export default function QrCodeGenerator(): JSX.Element{
     return(
         <main>
             <h1>QR Code Generator</h1>
-            <div>
+            <div className="url-input-container">
                 <input type="url"
                        placeholder="Enter link..."
                        title="Enter the link you want a QR code for"
