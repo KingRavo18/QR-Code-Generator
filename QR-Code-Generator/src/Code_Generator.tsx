@@ -10,7 +10,7 @@ export default function QrCodeGenerator(): JSX.Element{
     return(
         <main>
             <h1>QR Code Generator</h1>
-            <div>
+            <div className="url-input-container">
                 <input type="url"
                        placeholder="Enter link..."
                        title="Enter the link you want a QR code for"
@@ -27,7 +27,12 @@ export default function QrCodeGenerator(): JSX.Element{
             <div>
 
             </div>
-            <button>Download QR Code</button>
+            <button className="qr-code-download-btn"
+                    title="Download your QR code"
+                    aria-label="Download your QR code"
+            >
+                Download QR Code
+            </button>
         </main>
     )
 }
