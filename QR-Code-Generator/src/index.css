@@ -3,8 +3,12 @@
     --text-color: white;
 }
 
-body{
+*{
     margin: 0;
+    padding: 0;
+}
+
+body{
     background-color: var(--background-color);
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     color: var(--text-color);
@@ -18,6 +22,7 @@ main{
 }
 
 h1{
+    margin: 2vw;
     font-size: 3.5vw;
 }
 
@@ -69,6 +74,7 @@ button{
 
 .loading-message{
     margin-top: 5vw;
+    font-size: 1.25vw;
 }
 
 .generated-code-container{
