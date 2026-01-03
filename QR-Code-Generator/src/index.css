@@ -2,11 +2,9 @@
     color-scheme: light dark;
     --background-color: light-dark(rgb(236, 236, 236), rgb(72, 72, 72));
     --text-color: light-dark(black, white);
-    --button-color: light-dark(rgb(255, 255, 255), rgb(53, 53, 53));
-    --button-color-hover: light-dark(rgb(213, 213, 213), rgb(30, 30, 30));
+    --input-and-button-color: light-dark(rgb(255, 255, 255), rgb(53, 53, 53));
+    --input-and-button-color-hover: light-dark(rgb(213, 213, 213), rgb(30, 30, 30));
     --button-color-active: light-dark(rgb(192, 192, 192), rgb(0, 0, 0));
-    --input-color: light-dark(rgb(255, 255, 255), rgb(53, 53, 53));
-    --input-color-hover: light-dark(rgb(213, 213, 213), rgb(30, 30, 30));
 }
 
 *{
@@ -37,11 +35,11 @@ button{
     cursor: pointer;
     border: none;
     color: var(--text-color);
-    background-color: var(--button-color);
+    background-color: var(--input-and-button-color);
     transition: 0.25s;
 
     &:hover{
-        background-color: var(--button-color-hover);
+        background-color: var(--input-and-button-color-hover);
     }
 
     &:active{
@@ -51,7 +49,7 @@ button{
 
 .url-input-container{
     & input{
-        background-color: var(--input-color);
+        background-color: var(--input-and-button-color);
         font-size: 1.25vw;
         width: 20vw;
         padding: 5px 10px;
@@ -63,13 +61,13 @@ button{
         transition: 0.25s;
 
         &:hover{
-            background-color: var(--input-color-hover);
+            background-color: var(--input-and-button-color-hover);
             width: 23vw;
         }
 
         &:focus{
             outline: none;
-            background-color: var(--input-color-hover);
+            background-color: var(--input-and-button-color-hover);
             width: 23vw;
         }
     }
