@@ -2,8 +2,14 @@ import { useState, type JSX } from "react";
 
 export default function QrCodeGenerator(): JSX.Element{
     const [link, setLink] = useState<string>("");
+    const [isGenerated, setIsGenerated] = useState<boolean>(false);
+    const [isLoading, setIsLoading] = useState<boolean>(false);
 
     function generateCode(): void{
+
+    }
+
+    function downloadCode(): void{
 
     }
 
@@ -24,15 +30,23 @@ export default function QrCodeGenerator(): JSX.Element{
                     Generate
                 </button>
             </div>
-            <div>
 
-            </div>
-            <button className="qr-code-download-btn"
-                    title="Download your QR code"
-                    aria-label="Download your QR code"
-            >
-                Download QR Code
-            </button>
+            {isLoading &&
+                <p className="loading-message">Loading...</p>
+            }
+
+            {isGenerated &&
+                <div className="generated-code-container">
+                    <img />
+                    <button onClick={downloadCode}
+                            title="Download your QR code"
+                            aria-label="Download your QR code"
+                    >
+                        Download QR Code
+                    </button>
+                </div>
+            }
+
         </main>
     )
 }
