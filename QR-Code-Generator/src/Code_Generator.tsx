@@ -13,8 +13,15 @@ export default function QrCodeGenerator(): JSX.Element{
 
     function generateCode(): void{
         const link = url.trim().replace(/\s/g, "");
-        setIsGenerated(new URL(link) ? true : false);
-        setIsErrorMessage(new URL(link) ? false : true);
+        try{
+            new URL(link);
+            setIsErrorMessage(false);
+            setIsGenerated(true);
+        }
+        catch(_){
+            setIsGenerated(false);
+            setIsErrorMessage(true);
+        }
     }
 
     function downloadCode(): void{
@@ -47,7 +54,7 @@ export default function QrCodeGenerator(): JSX.Element{
 
             {!isGenerated && isErrorMessage &&
                 <p className="message error-message">
-                    Please make sure you have inputted a valid url.
+                    Please input a valid url.
                 </p>
             }
 
