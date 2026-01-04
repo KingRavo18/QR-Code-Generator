@@ -1,12 +1,15 @@
 import { useState, type JSX } from "react";
+import QRCode from "react-qr-code";
 
 export default function QrCodeGenerator(): JSX.Element{
-    const [link, setLink] = useState<string>("");
+    const [url, setUrl] = useState<string>("");
     const [isGenerated, setIsGenerated] = useState<boolean>(false);
-    const [isLoading, setIsLoading] = useState<boolean>(false);
 
     function generateCode(): void{
-
+        if(url.trim() === ""){
+            return;
+        }
+        setIsGenerated(true);
     }
 
     function downloadCode(): void{
@@ -18,10 +21,10 @@ export default function QrCodeGenerator(): JSX.Element{
             <h1>QR Code Generator</h1>
             <div className="url-input-container">
                 <input type="url"
-                       placeholder="Enter link..."
-                       title="Enter the link you want a QR code for"
-                       aria-label="Enter the link you want a QR code for"
-                       onChange={event => setLink(event.target.value)}
+                       placeholder="Input url..."
+                       title="Input the url you want a QR code for"
+                       aria-label="Input the url you want a QR code for"
+                       onChange={event => setUrl(event.target.value)}
                 />
                 <button onClick={generateCode}
                         title="Generate your QR code"
@@ -31,19 +34,20 @@ export default function QrCodeGenerator(): JSX.Element{
                 </button>
             </div>
 
-            {!isGenerated && !isLoading &&
+            {!isGenerated &&
                 <p className="message">
                     Please generate a QR code.
                 </p>
             }
 
-            {isLoading &&
-                <p className="message">Loading...</p>
-            }
-
             {isGenerated &&
                 <div className="generated-code-container">
-                    <img />
+                    <QRCode 
+                        size={200}
+                        bgColor="white"
+                        fgColor="black"
+                        value={url}
+                    />
                     <button onClick={downloadCode}
                             title="Download your QR code"
                             aria-label="Download your QR code"
