@@ -4,12 +4,17 @@ import QRCode from "react-qr-code";
 export default function QrCodeGenerator(): JSX.Element{
     const [url, setUrl] = useState<string>("");
     const [isGenerated, setIsGenerated] = useState<boolean>(false);
+    const [isErrorMessage, setIsErrorMessage] = useState<boolean>(false);
+
+    function handleUrlInput(event: React.ChangeEvent<HTMLInputElement>){
+        setUrl(event.target.value);
+        setIsGenerated(false);
+    }
 
     function generateCode(): void{
-        if(url.trim() === ""){
-            return;
-        }
-        setIsGenerated(true);
+        const link = url.trim().replace(/\s/g, "");
+        setIsGenerated(new URL(link) ? true : false);
+        setIsErrorMessage(new URL(link) ? false : true);
     }
 
     function downloadCode(): void{
@@ -18,13 +23,13 @@ export default function QrCodeGenerator(): JSX.Element{
 
     return(
         <main>
-            <h1>QR Code Generator</h1>
+            <h1>URL to QR Code Generator</h1>
             <div className="url-input-container">
                 <input type="url"
                        placeholder="Input url..."
                        title="Input the url you want a QR code for"
                        aria-label="Input the url you want a QR code for"
-                       onChange={event => setUrl(event.target.value)}
+                       onChange={handleUrlInput}
                 />
                 <button onClick={generateCode}
                         title="Generate your QR code"
@@ -34,13 +39,19 @@ export default function QrCodeGenerator(): JSX.Element{
                 </button>
             </div>
 
-            {!isGenerated &&
+            {!isGenerated && !isErrorMessage &&
                 <p className="message">
                     Please generate a QR code.
                 </p>
             }
 
-            {isGenerated &&
+            {!isGenerated && isErrorMessage &&
+                <p className="message error-message">
+                    Please make sure you have inputted a valid url.
+                </p>
+            }
+
+            {isGenerated && !isErrorMessage &&
                 <div className="generated-code-container">
                     <QRCode 
                         size={200}

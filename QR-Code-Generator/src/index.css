@@ -84,6 +84,10 @@ button{
     font-size: 1.15vw;
 }
 
+.error-message{
+    
+}
+
 .generated-code-container{
     display: flex;
     flex-direction: column;
