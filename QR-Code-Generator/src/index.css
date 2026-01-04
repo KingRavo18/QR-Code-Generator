@@ -79,9 +79,9 @@ button{
     }
 }
 
-.loading-message{
+.message{
     margin-top: 5vw;
-    font-size: 1.25vw;
+    font-size: 1.15vw;
 }
 
 .generated-code-container{

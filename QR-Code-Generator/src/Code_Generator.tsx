@@ -32,13 +32,13 @@ export default function QrCodeGenerator(): JSX.Element{
             </div>
 
             {!isGenerated && !isLoading &&
-                <p className="loading-message">
+                <p className="message">
                     Please generate a QR code.
                 </p>
             }
 
             {isLoading &&
-                <p className="loading-message">Loading...</p>
+                <p className="message">Loading...</p>
             }
 
             {isGenerated &&
