@@ -5,11 +5,13 @@
     --input-and-button-color: light-dark(rgb(255, 255, 255), rgb(53, 53, 53));
     --input-and-button-color-hover: light-dark(rgb(213, 213, 213), rgb(30, 30, 30));
     --button-color-active: light-dark(rgb(192, 192, 192), rgb(0, 0, 0));
+    --normal-text-size: 1.35vw;
 }
 
 *{
     margin: 0;
     padding: 0;
+    font-size: var(--normal-text-size);
 }
 
 body{
@@ -26,12 +28,11 @@ main{
 }
 
 h1{
-    margin: 2vw;
+    margin: 4vw;
     font-size: 3.5vw;
 }
 
 button{
-    font-size: 1.25vw;
     cursor: pointer;
     border: none;
     color: var(--text-color);
@@ -41,7 +42,7 @@ button{
     &:hover{
         background-color: var(--input-and-button-color-hover);
     }
-
+  
     &:active{
         background-color: var(--button-color-active);
     }
@@ -50,8 +51,7 @@ button{
 .url-input-container{
     & input{
         background-color: var(--input-and-button-color);
-        font-size: 1.25vw;
-        width: 20vw;
+        width: 25vw;
         padding: 5px 10px;
         cursor: pointer;
         border-top-left-radius: 10px;
@@ -62,13 +62,13 @@ button{
 
         &:hover{
             background-color: var(--input-and-button-color-hover);
-            width: 23vw;
+            width: 26vw;
         }
 
         &:focus{
             outline: none;
             background-color: var(--input-and-button-color-hover);
-            width: 23vw;
+            width: 26vw;
         }
     }
 
@@ -81,11 +81,10 @@ button{
 
 .message{
     margin-top: 5vw;
-    font-size: 1.15vw;
 }
 
 .error-message{
-    
+
 }
 
 .generated-code-container{
