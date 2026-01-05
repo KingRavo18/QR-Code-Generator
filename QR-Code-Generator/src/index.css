@@ -5,6 +5,7 @@
     --input-and-button-color: light-dark(rgb(255, 255, 255), rgb(53, 53, 53));
     --input-and-button-color-hover: light-dark(rgb(213, 213, 213), rgb(30, 30, 30));
     --button-color-active: light-dark(rgb(192, 192, 192), rgb(0, 0, 0));
+    --default-message-color: light-dark(rgba(0, 0, 0, 0.5), rgba(255, 255, 255, 0.5));
     --normal-text-size: 1.35vw;
 }
 
@@ -28,7 +29,8 @@ main{
 }
 
 h1{
-    margin: 4vw;
+    margin-top: 4vw;
+    margin-bottom: 2.5vw;
     font-size: 3.5vw;
 }
 
@@ -80,7 +82,8 @@ button{
 }
 
 .message{
-    margin-top: 5vw;
+    margin-top: 8.5vw;
+    color: var(--default-message-color);
 }
 
 .error-message{
