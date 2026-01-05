@@ -74,7 +74,6 @@ export default function QrCodeGenerator(): JSX.Element{
                     </button>
                 </div>
             }
-
         </main>
     )
 }
