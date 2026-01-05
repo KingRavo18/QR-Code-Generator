@@ -1,10 +1,11 @@
-import { useState, type JSX } from "react";
+import { useRef, useState, type JSX } from "react";
 import QRCode from "react-qr-code";
 
 export default function QrCodeGenerator(): JSX.Element{
     const [url, setUrl] = useState<string>("");
     const [isGenerated, setIsGenerated] = useState<boolean>(false);
     const [isErrorMessage, setIsErrorMessage] = useState<boolean>(false);
+    const qrCode = useRef(null);
 
     function handleUrlInput(event: React.ChangeEvent<HTMLInputElement>){
         setUrl(event.target.value);
@@ -25,7 +26,10 @@ export default function QrCodeGenerator(): JSX.Element{
     }
 
     function downloadCode(): void{
-
+        if(!isGenerated){
+            return;
+        }
+        const qrCodeElement = qrCode.current;
     }
 
     return(
@@ -65,10 +69,12 @@ export default function QrCodeGenerator(): JSX.Element{
                         bgColor="white"
                         fgColor="black"
                         value={url}
+                        ref={qrCode}
                     />
                     <button onClick={downloadCode}
                             title="Download your QR code"
                             aria-label="Download your QR code"
+                            disabled={!isGenerated}
                     >
                         Download QR Code
                     </button>
