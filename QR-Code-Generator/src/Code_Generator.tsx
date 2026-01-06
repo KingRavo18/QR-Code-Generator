@@ -5,7 +5,7 @@ export default function QrCodeGenerator(): JSX.Element{
     const [url, setUrl] = useState<string>("");
     const [isGenerated, setIsGenerated] = useState<boolean>(false);
     const [isErrorMessage, setIsErrorMessage] = useState<boolean>(false);
-    const qrCode = useRef(null);
+    const qrCode = useRef<HTMLDivElement | null>(null);
 
     function handleUrlInput(event: React.ChangeEvent<HTMLInputElement>){
         setUrl(event.target.value);
@@ -29,7 +29,21 @@ export default function QrCodeGenerator(): JSX.Element{
         if(!isGenerated){
             return;
         }
-        const qrCodeElement = qrCode.current;
+        const qrCodeSvg = qrCode.current?.querySelector("svg");
+        if(!qrCodeSvg){
+            return;
+        }
+        const svgString = new XMLSerializer().serializeToString(qrCodeSvg);
+        const blob = new Blob([svgString], {
+            type: "image/svg+xml;charset=utf-8"
+        });
+        const qrCodeUrl = URL.createObjectURL(blob);
+        const link = document.createElement("a");
+        link.target = "_blank";
+        link.href = qrCodeUrl;
+        link.download = "qr-code.svg";
+        link.click();
+        URL.revokeObjectURL(qrCodeUrl);
     }
 
     return(
@@ -64,13 +78,14 @@ export default function QrCodeGenerator(): JSX.Element{
 
             {isGenerated && !isErrorMessage &&
                 <div className="generated-code-container">
-                    <QRCode 
-                        size={200}
-                        bgColor="white"
-                        fgColor="black"
-                        value={url}
-                        ref={qrCode}
-                    />
+                    <div ref={qrCode}>
+                        <QRCode 
+                            size={200}
+                            bgColor="white"
+                            fgColor="black"
+                            value={url} 
+                        />
+                    </div>
                     <button onClick={downloadCode}
                             title="Download your QR code"
                             aria-label="Download your QR code"
