@@ -38,7 +38,6 @@ export default function QrCodeGenerator(): JSX.Element{
             type: "image/svg+xml;charset=utf-8"
         });
         const qrCodeUrl = URL.createObjectURL(blob);
-        console.log(qrCodeUrl);
         const link = document.createElement("a");
         link.href = qrCodeUrl;
         link.download = "qr-code.svg";
